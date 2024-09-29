@@ -1,0 +1,35 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  rustfmt:
+    name: Check rustfmt
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - run: cargo fmt --all -- --check
+
+  test:
+    name: Lint and test
+    runs-on: ubuntu-latest
+    env:
+      RUSTFLAGS: -D warnings
+      RUSTDOCFLAGS: -D warnings
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: clippy
+        run: cargo clippy
+
+      - name: test
+        run: cargo test
+
+      - name: build examples
+        run: cargo build --examples
