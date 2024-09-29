@@ -1,6 +1,8 @@
-use glow::HasContext;
 use imgui::Context;
-use imgui_glow_renderer::AutoRenderer;
+use imgui_glow_renderer::{
+    glow::{self, HasContext},
+    AutoRenderer,
+};
 use imgui_sdl2_support::SdlPlatform;
 use sdl2::{
     event::Event,
@@ -58,7 +60,7 @@ fn main() {
         .add_font(&[imgui::FontSource::DefaultFontData { config: None }]);
 
     /* create platform and renderer */
-    let mut platform = SdlPlatform::init(&mut imgui);
+    let mut platform = SdlPlatform::new(&mut imgui);
     let mut renderer = AutoRenderer::initialize(gl, &mut imgui).unwrap();
 
     /* start main loop */
