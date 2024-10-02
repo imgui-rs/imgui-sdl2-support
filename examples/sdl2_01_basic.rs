@@ -61,7 +61,7 @@ fn main() {
 
     /* create platform and renderer */
     let mut platform = SdlPlatform::new(&mut imgui);
-    let mut renderer = AutoRenderer::initialize(gl, &mut imgui).unwrap();
+    let mut renderer = AutoRenderer::new(gl, &mut imgui).unwrap();
 
     /* start main loop */
     let mut event_pump = sdl.event_pump().unwrap();

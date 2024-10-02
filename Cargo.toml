@@ -15,5 +15,5 @@ imgui = { version = "0.12.0", git = "https://github.com/imgui-rs/imgui-rs" }
 sdl2 = "0.37"
 
 [dev-dependencies]
-imgui-glow-renderer = "0.12.0"
+imgui-glow-renderer = { version = "0.13.0", git = "https://github.com/imgui-rs/imgui-glow-renderer" }
 sdl2 = { version = "0.37", features = ["bundled", "static-link"] }

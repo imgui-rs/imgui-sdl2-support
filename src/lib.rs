@@ -350,22 +350,14 @@ fn handle_key(io: &mut Io, key: &Scancode, pressed: bool) {
 
 /// Handle changes in the key modifier states.
 fn handle_key_modifier(io: &mut Io, keymod: &Mod) {
-    io.add_key_event(
-        imgui::Key::ModShift,
-        keymod.intersects(Mod::LSHIFTMOD | Mod::RSHIFTMOD),
-    );
-    io.add_key_event(
-        imgui::Key::ModCtrl,
-        keymod.intersects(Mod::LCTRLMOD | Mod::RCTRLMOD),
-    );
-    io.add_key_event(
-        imgui::Key::ModAlt,
-        keymod.intersects(Mod::LALTMOD | Mod::RALTMOD),
-    );
-    io.add_key_event(
-        imgui::Key::ModSuper,
-        keymod.intersects(Mod::LGUIMOD | Mod::RGUIMOD),
-    );
+    io.add_key_event(imgui::Key::LeftShift, keymod.intersects(Mod::LSHIFTMOD));
+    io.add_key_event(imgui::Key::RightShift, keymod.intersects(Mod::RSHIFTMOD));
+    io.add_key_event(imgui::Key::LeftCtrl, keymod.intersects(Mod::LCTRLMOD));
+    io.add_key_event(imgui::Key::RightCtrl, keymod.intersects(Mod::RCTRLMOD));
+    io.add_key_event(imgui::Key::LeftAlt, keymod.intersects(Mod::LALTMOD));
+    io.add_key_event(imgui::Key::RightAlt, keymod.intersects(Mod::RALTMOD));
+    io.add_key_event(imgui::Key::LeftSuper, keymod.intersects(Mod::LGUIMOD));
+    io.add_key_event(imgui::Key::RightSuper, keymod.intersects(Mod::RGUIMOD));
 }
 
 /// Map an imgui::MouseCursor to an equivalent sdl2::mouse::SystemCursor.
